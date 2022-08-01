@@ -1,0 +1,53 @@
+service: pacetest
+#frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: us-east-1
+  ecr:
+    images:
+      processimage:
+        path: ./src/
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "s3:GetObject"
+        - 's3:PutObject'
+        - "secretsmanager:GetSecretValue"
+      Resource: "*"
+
+
+functions:
+  storecsv:
+    handler: src/lambda_store.store
+    description: Reads CSV file and store to other bucket path on S3
+    timeout: 180 # sec
+    memorySize: 128 #mb
+    events:
+      - s3:
+          bucket: salarsourcebucket
+          event: s3:ObjectCreated:*
+          rules:
+            # - prefix: Data
+            - suffix: pace-data.txt
+          existing: true
+
+  processdb:
+    # image: <account>.dkr.ecr.<region>.amazonaws.com/<repository>@<digest>
+    # image: 226716066219.dkr.ecr.us-east-1.amazonaws.com/test-containerize@sha256:ffa9f1f845ea7f4156aa82dcf3aa1b24460433a7492c9b10f1db7f622fe0a507
+    image:
+      name: processimage
+    description: Process CSV file and store to a postgres database
+    timeout: 400 # sec
+    memorySize: 512 #mb
+    events:
+      - s3:
+          bucket: salardestbucket
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: Data/Raw/Input
+            - suffix: pace-data.csv
+          existing: true
