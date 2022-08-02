@@ -37,9 +37,9 @@ functions:
 
   processdb:
     # image: <account>.dkr.ecr.<region>.amazonaws.com/<repository>@<digest>
-    # image: 226716066219.dkr.ecr.us-east-1.amazonaws.com/test-containerize@sha256:ffa9f1f845ea7f4156aa82dcf3aa1b24460433a7492c9b10f1db7f622fe0a507
-    image:
-      name: processimage
+    image: 226716066219.dkr.ecr.us-east-1.amazonaws.com/test-containerize@sha256:ffa9f1f845ea7f4156aa82dcf3aa1b24460433a7492c9b10f1db7f622fe0a507
+    # image:
+    #   name: processimage
     description: Process CSV file and store to a postgres database
     timeout: 400 # sec
     memorySize: 512 #mb
