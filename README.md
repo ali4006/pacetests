@@ -8,7 +8,7 @@ The main goals of the assignment are:
 2) Write a Lambda handler that triggers when a file that matches the filename lands in the bucket you created above.
 
     a) The first Lambda should extract the data from the CSV and store it in a new bucket keyed `Data/Raw/Input`.
-3) Write a second Lambda handler that triggers when a file that matches the filename lands in the new bucket you just created `1`Data/Raw/Input`.
+3) Write a second Lambda handler that triggers when a file that matches the filename lands in the new bucket you just created `Data/Raw/Input`.
 
     a) The second Lambda should extract the data from the CSV and process the file.
 
@@ -17,7 +17,7 @@ The main goals of the assignment are:
     c) For each ship grouped by `CallSign`, if the `MoveStatus` is `Under way using engine`, fill in any missing or zero `speeds` with the average of all speeds for that `CallSign`.
 
     d) Create a new feature called `BeamRatio` calculated as Beam / Length (Beam divided by Length).
-    
+
     e) Programmatically store the cleaned data in a Postgres table on RDS.
 
 
