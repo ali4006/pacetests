@@ -4,7 +4,6 @@ service: pacetest
 provider:
   name: aws
   runtime: python3.8
-  profile: serverlessUser
   stage: dev
   region: us-east-1
   ecr:

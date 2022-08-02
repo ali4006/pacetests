@@ -13,5 +13,4 @@ jobs:
 workflows:
   pacetest:
     jobs:
-      - build-and-deploy:
-          context: pacetestProject
+      - build-and-deploy
