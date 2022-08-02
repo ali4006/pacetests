@@ -5,12 +5,11 @@ jobs:
   build-and-deploy:
     docker:
       - image: cimg/python:3.10.2
-   steps:
+    steps:
       - checkout
       - python/install-packages:
           pkg-manager: pip
       - run:
-          # command: pytest
           command: sudo npm i -g serverless npm@latest
       - run:
           command: npm install
