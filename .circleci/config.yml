@@ -27,21 +27,4 @@ workflows:
         filter:
           branches:
             only:
-              - test-CI
-
-
-# version: 2.1
-# orbs:
-#   python: circleci/python@1.5.0
-# jobs:
-#   build-and-deploy:
-#     executor: serverless/default
-#     steps:
-#        - checkout
-#        - aws-cli/setup
-#        - serverless/setup
-#        - run: sls deploy 
-# workflows:
-#   pacetest:
-#     jobs:
-#       - build-and-deploy
+              - main
