@@ -1,21 +1,15 @@
 version: 2.1
 orbs:
-  python: circleci/python@1.5.0
+   aws-cli: circleci/aws-cli@1.0
+   serverless: circleci/serverless-framework@1.0
 jobs:
-  build-and-deploy:
-    docker:
-      - image: cimg/python:3.10.2
-    steps:
-      - checkout
-      - run:
-          command: sudo npm i -g serverless npm@latest
-      - run:
-          command: npm install
-      - run:
-          command: ./.circleci/install-credentials.sh
-      - run:
-          command: sls deploy
-
+   build-and-deploy:
+     executor: serverless/default
+     steps:
+       - checkout
+       - aws-cli/setup
+       - serverless/setup
+       - run: sls deploy 
 workflows:
   pacetest:
     jobs:
