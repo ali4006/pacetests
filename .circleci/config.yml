@@ -22,8 +22,8 @@ workflows:
   pacetest:
     jobs:
       - build-and-deploy:
-        context: pacetestProject
-        filter:
-          branches:
-            only:
-              - main
+          context: pacetestProject
+          filter:
+            branches:
+              only:
+                - main
