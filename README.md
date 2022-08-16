@@ -1,7 +1,7 @@
 
 # Serverless Framework AWS Lambda Function
 
-This is an example assignment for RioTinto Data Engineer position.
+This is an example assignment for Data Engineer position.
 The main goals of the assignment are:
 
 1) Write a script (bash preferred) that uploads the local raw file into an S3 bucket.
@@ -48,7 +48,7 @@ functions:
 After successful deployment, you can invoke the deployed function by using the following command:
 
 ```bash
-sh bucket_opt.sh upload_file_to_bucket salarsourcebucket data/pace-data.txt pace-data.txt
+sh src/bucket_opt.sh upload_file_to_bucket salarsourcebucket data/pace-data.txt pace-data.txt
 
 ```
 
